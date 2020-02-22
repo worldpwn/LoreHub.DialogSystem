@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace LoreHub.DialogSystem.Core
 {
-    public class Dialog
+    public class Dialog 
     {
         public DialogNode CurrentNode { get; private set; }
 
@@ -22,7 +23,7 @@ namespace LoreHub.DialogSystem.Core
 
         public void Start()
         {
-
+           // CurrentNode.Content;
         }
 
         private IEnumerable<DialogNode> GetDialogNodes()
@@ -31,6 +32,11 @@ namespace LoreHub.DialogSystem.Core
             {
                 yield return node;
             }
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
     }
 }

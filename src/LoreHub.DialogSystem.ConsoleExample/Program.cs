@@ -1,5 +1,6 @@
 ﻿using LoreHub.DialogSystem.Core;
 using System;
+using System.Collections.Generic;
 
 namespace LoreHub.DialogSystem.ConsoleExample
 {
@@ -9,11 +10,24 @@ namespace LoreHub.DialogSystem.ConsoleExample
         {
             Console.WriteLine("Hello World!");
 
-            DialogNode startNode = new DialogNode();
+            DialogNode startNode = new DialogNode(new List<DialogOption> 
+                {
+                    new DialogOption("Option 1", null),
+                    new DialogOption("Option 2", null),
+                    new DialogOption("Option 3", null),
+                });
 
             Dialog dialog = Dialog.CreateNew(startNode);
 
-            dialog.Start();
+            Console.WriteLine(dialog.CurrentNode.Content);
+
+            foreach (DialogOption option in dialog.CurrentNode.DialogOptions)
+            {
+                Console.WriteLine(option.Content);
+            }
+            
+            Console.ReadLine();
+
         }
     }
 }
