@@ -13,4 +13,8 @@
     <PackageReference Include="coverlet.collector" Version="1.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LoreHub.DialogSystem.Core\LoreHub.DialogSystem.Core.csproj" />
+  </ItemGroup>
+
 </Project>

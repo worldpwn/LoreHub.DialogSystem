@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoreHub.DialogSystem.Core", "LoreHub.DialogSystem.Core\LoreHub.DialogSystem.Core.csproj", "{DBFF977D-AED8-4D6E-A5E2-D3B4784FA068}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoreHub.DialogSystem.Core", "LoreHub.DialogSystem.Core\LoreHub.DialogSystem.Core.csproj", "{DBFF977D-AED8-4D6E-A5E2-D3B4784FA068}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoreHub.DialogSystem.Tests", "LoreHub.DialogSystem.Tests\LoreHub.DialogSystem.Tests.csproj", "{7BE5F2B7-5A8C-4A6D-A450-66EAD927E905}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoreHub.DialogSystem.Tests", "LoreHub.DialogSystem.Tests\LoreHub.DialogSystem.Tests.csproj", "{7BE5F2B7-5A8C-4A6D-A450-66EAD927E905}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoreHub.DialogSystem.Example.Console", "LoreHub.DialogSystem.Example.Console\LoreHub.DialogSystem.Example.Console.csproj", "{5BF74EE9-5E4D-40D2-BC19-14C8569E1967}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{56635187-B800-4C80-84C5-10CAD58369B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoreHub.DialogSystem.ConsoleExample", "LoreHub.DialogSystem.ConsoleExample\LoreHub.DialogSystem.ConsoleExample.csproj", "{57F7E3BC-97D5-466B-899C-DCC28AB3C06E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +27,21 @@ Global
 		{7BE5F2B7-5A8C-4A6D-A450-66EAD927E905}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BE5F2B7-5A8C-4A6D-A450-66EAD927E905}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BE5F2B7-5A8C-4A6D-A450-66EAD927E905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BF74EE9-5E4D-40D2-BC19-14C8569E1967}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BF74EE9-5E4D-40D2-BC19-14C8569E1967}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BF74EE9-5E4D-40D2-BC19-14C8569E1967}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BF74EE9-5E4D-40D2-BC19-14C8569E1967}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57F7E3BC-97D5-466B-899C-DCC28AB3C06E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57F7E3BC-97D5-466B-899C-DCC28AB3C06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57F7E3BC-97D5-466B-899C-DCC28AB3C06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57F7E3BC-97D5-466B-899C-DCC28AB3C06E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5BF74EE9-5E4D-40D2-BC19-14C8569E1967} = {56635187-B800-4C80-84C5-10CAD58369B6}
+		{57F7E3BC-97D5-466B-899C-DCC28AB3C06E} = {56635187-B800-4C80-84C5-10CAD58369B6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98C249D9-D60D-42DB-B497-84B756D31305}
