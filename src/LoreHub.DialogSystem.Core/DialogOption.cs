@@ -9,10 +9,17 @@ namespace LoreHub.DialogSystem.Core
         public string Content { get; private set; }
         public DialogNode NextNode { get; private set; }
 
+        
         public DialogOption(string content, DialogNode nextNode)
         {
             Content = content;
             NextNode = nextNode;
         }
+
+        public DialogNode MoveNext()
+        {
+            return NextNode;
+        }
+
     }
 }
