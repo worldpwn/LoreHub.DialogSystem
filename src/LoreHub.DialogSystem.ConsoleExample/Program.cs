@@ -1,4 +1,6 @@
-﻿using LoreHub.DialogSystem.Core;
+﻿using LoreHub.DialogSystem.ConsoleExample.Data;
+using LoreHub.DialogSystem.ConsoleExample.Presentation;
+using LoreHub.DialogSystem.Core;
 using System;
 using System.Collections.Generic;
 
@@ -8,32 +10,18 @@ namespace LoreHub.DialogSystem.ConsoleExample
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
-            DialogNode startNode = new DialogNode(new List<DialogOption> 
-                {
-                    new DialogOption("Option 1", null),
-                    new DialogOption("Option 2", new DialogNode(new List<DialogOption>())),
-                    new DialogOption("Option 3", null),
-                });
-
-            Dialog dialog = Dialog.CreateNew(startNode);
-
-            Console.WriteLine(dialog.CurrentNode.Content);
+            Dialog dialog = SampleDialog.GetDialog();
 
 
-            Dictionary<string, Func<DialogNode>> actions = new Dictionary<string, Func<DialogNode>>();
-            int optionNumber = 0;
-            foreach (DialogOption option in dialog.CurrentNode.DialogOptions)
-            {
-                int currentOptionNumber = ++optionNumber;
-                actions.Add(currentOptionNumber.ToString(), option.MoveNext);
-                Console.WriteLine($"{currentOptionNumber} — {option.Content}");
-            }
+            ConsoleDialog consoleDialog = new ConsoleDialog(dialog);
+            consoleDialog.Start();
+
+
+           
             
-            string result =  Console.ReadLine();
+            //string result =  Console.ReadLine();
 
-            Console.WriteLine(actions[result].Invoke().Content);
+            //Console.WriteLine(actions[result].Invoke().Content);
 
         }
     }
