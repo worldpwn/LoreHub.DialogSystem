@@ -18,8 +18,22 @@ namespace LoreHub.DialogSystem.ConsoleExample.Presentation
         {
             Console.WriteLine("Starting dialog...");
 
+            this.ShowDialogNode();
+            
+            //ConsoleDialogNode dialogNode = new ConsoleDialogNode(this.Dialog.CurrentNode);
+            //dialogNode.Show();
+        }
+
+        private void ShowDialogNode()
+        {
             ConsoleDialogNode dialogNode = new ConsoleDialogNode(this.Dialog.CurrentNode);
             dialogNode.Show();
+
+            string result = Console.ReadLine();
+
+            dialogNode.ReadInput(result);
+
+            ShowDialogNode();
         }
     }
 }

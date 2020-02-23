@@ -25,6 +25,11 @@ namespace LoreHub.DialogSystem.ConsoleExample.Presentation
             DisplyOptions();
         }
 
+        public DialogNode ReadInput(string input)
+        {
+            return Options[input].MoveNext();
+        }
+
         private void DisplyContent()
         {
             Console.WriteLine(this.Content);

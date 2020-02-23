@@ -11,22 +11,14 @@ namespace LoreHub.DialogSystem.Core
 
         public IEnumerable<DialogNode> DialogNodes => GetDialogNodes();
 
-        public bool IsOver { get; private set; }
-
         private Dialog(DialogNode startNode)
         {
             this.CurrentNode = startNode;
-            this.IsOver = false;
         }
 
         public static Dialog CreateNew(DialogNode startNode)
         {
             return new Dialog(startNode);
-        }
-
-        public void Start()
-        {
-           // CurrentNode.Content;
         }
 
         private IEnumerable<DialogNode> GetDialogNodes()

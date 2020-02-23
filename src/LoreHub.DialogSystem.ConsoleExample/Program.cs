@@ -12,17 +12,8 @@ namespace LoreHub.DialogSystem.ConsoleExample
         {
             Dialog dialog = SampleDialog.GetDialog();
 
-
             ConsoleDialog consoleDialog = new ConsoleDialog(dialog);
             consoleDialog.Start();
-
-
-           
-            
-            //string result =  Console.ReadLine();
-
-            //Console.WriteLine(actions[result].Invoke().Content);
-
         }
     }
 }
