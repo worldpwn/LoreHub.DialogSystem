@@ -14,6 +14,8 @@ namespace LoreHub.DialogSystem.ConsoleExample
 
             ConsoleDialog consoleDialog = new ConsoleDialog(dialog);
             consoleDialog.Start();
+
+
         }
     }
 }
