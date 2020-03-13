@@ -27,7 +27,8 @@ namespace LoreHub.DialogSystem.ConsoleExample.Presentation
 
         public DialogNode ReadInput(string input)
         {
-            return Options[input].Select();
+            throw new NotImplementedException();
+          //  return Options[input].Select();
         }
 
         private void DisplyContent()

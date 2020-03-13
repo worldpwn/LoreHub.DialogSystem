@@ -12,28 +12,22 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         public void SelectOption_Should_RaiseEvent()
         {
             // Arrange
-            DialogNode? realNextNode = null;
+            bool isFired = false;
             DialogNode currentDialogNode = new DialogNode(new List<DialogOption> { });
+            DialogOption optionToSelect = new DialogOption("some", new DialogNode(new List<DialogOption> { }));
 
-            DialogNode expectedNextNode = new DialogNode(new List<DialogOption> { });
-
-            DialogOption selectedOption = new DialogOption("some", expectedNextNode);
-
-            Func<object, EventArgs, Action> func = Click;
-
-            selectedOption.SelectEvent += Click;
+            void FuncToFire(object sender, EventArgs e)
+            {
+                isFired = true;
+            }
+            optionToSelect.SelectEvent += FuncToFire;
 
 
             // Act
-
+            optionToSelect.Select();
 
             // Assert
-            Assert.Equal(expectedNextNode, realNextNode);
-        }
-
-        private void Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("The threshold was reached.");
+            Assert.True(isFired);
         }
     }
 }

@@ -17,6 +17,11 @@ namespace LoreHub.DialogSystem.Core
             NextNode = nextNode;
         }
 
+        public void Select()
+        {
+            OnSelectEvent(EventArgs.Empty);
+        }
+
         protected virtual void OnSelectEvent(EventArgs e)
         {
             EventHandler handler = SelectEvent;
