@@ -1,0 +1,50 @@
+[
+  {
+    "id": "4fad1ff0-54e0-4903-bd61-6f0dc77eb648",
+    "content": "Hello, how are you?",
+    "options": [
+      {
+        "id": "9b51b554-e15e-41ed-ab5c-9ae410d9d66c",
+        "content": "I am fine.",
+        "nextNodeId": "4c9b0973-a851-4295-9230-f7454a9f9265"
+      },
+      {
+        "id": "eae81e94-d322-49ae-a79b-6ea838becc7d",
+        "content": "Leave me alone!",
+        "nextNodeId": "639afb7b-c536-423d-887b-cd4b3fd6a5af"
+      },
+      {
+        "id": "c11b2cd9-fb8d-453a-9636-9fd99be8683b",
+        "content": "...",
+        "nextNodeId": "639afb7b-c536-423d-887b-cd4b3fd6a5af"
+      }
+    ]
+  },
+  {
+    "id": "4c9b0973-a851-4295-9230-f7454a9f9265",
+    "content": "Noce to hear it!",
+    "options": [
+      {
+        "id": "4676f6ed-39e9-410b-916b-59a91dd2081b",
+        "content": "Bye.",
+        "nextNodeId": "30c001d8-238e-4157-b16b-fd820d5248bf"
+      }
+    ]
+  },
+  {
+    "id": "639afb7b-c536-423d-887b-cd4b3fd6a5af",
+    "content": "You are so rude!",
+    "options": [
+      {
+        "id": "4676f6ed-39e9-410b-916b-59a91dd2081b",
+        "content": "Finish dialog.",
+        "nextNodeId": "30c001d8-238e-4157-b16b-fd820d5248bf"
+      }
+    ]
+  },
+  {
+    "id": "30c001d8-238e-4157-b16b-fd820d5248bf",
+    "content": "",
+    "options": []
+  }
+]
