@@ -9,8 +9,8 @@ namespace LoreHub.DialogSystem.Core
         public string Content { get; private set; }
         public DialogNode NextNode { get; private set; }
 
-        public event EventHandler SelectEvent;
-        
+        public event EventHandler<DialogNode> SelectEvent;
+
         public DialogOption(string content, DialogNode nextNode)
         {
             Content = content;
@@ -24,8 +24,8 @@ namespace LoreHub.DialogSystem.Core
 
         protected virtual void OnSelectEvent(EventArgs e)
         {
-            EventHandler handler = SelectEvent;
-            handler?.Invoke(this, e);
+            EventHandler<DialogNode> handler = SelectEvent;
+            handler?.Invoke(this, NextNode);
         }
 
     }
