@@ -14,7 +14,7 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
             // Arrange
             bool isFired = false;
             DialogNode currentDialogNode = new DialogNode(new List<DialogOption> { });
-            DialogOption optionToSelect = new DialogOption("some", new DialogNode(new List<DialogOption> { }));
+            DialogOption optionToSelect = new DialogOption(new Content(), new DialogNode(new List<DialogOption> { }));
 
             void FuncToFire(object sender, DialogNode e)
             {
@@ -37,7 +37,7 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
             DialogNode realNextNode = null;
             DialogNode currentDialogNode = new DialogNode(new List<DialogOption> { });
             DialogNode nextNode = new DialogNode(new List<DialogOption> { });
-            DialogOption optionToSelect = new DialogOption("some", nextNode);
+            DialogOption optionToSelect = new DialogOption(new Content(), nextNode);
 
             void FuncToFire(object sender, DialogNode e)
             {

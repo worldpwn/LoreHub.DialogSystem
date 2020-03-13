@@ -6,15 +6,15 @@ namespace LoreHub.DialogSystem.Core
 {
     public class DialogOption
     {
-        public string Content { get; private set; }
+        public Content Content { get; private set; }
         public DialogNode NextNode { get; private set; }
 
         public event EventHandler<DialogNode> SelectEvent;
 
-        public DialogOption(string content, DialogNode nextNode)
+        public DialogOption(Content content, DialogNode nextNode)
         {
-            Content = content;
-            NextNode = nextNode;
+            Content = content ?? throw new ArgumentNullException(nameof(content));
+            NextNode = nextNode ?? throw new ArgumentNullException(nameof(content));
         }
 
         public void Select()

@@ -11,9 +11,9 @@ namespace LoreHub.DialogSystem.ConsoleExample.Data
         {
             DialogNode startNode = new DialogNode(new List<DialogOption>
                 {
-                    new DialogOption("Option 1", null),
-                    new DialogOption("Option 2", new DialogNode(new List<DialogOption>())),
-                    new DialogOption("Option 3", null),
+                    new DialogOption(new Content(), null),
+                    new DialogOption(new Content(), new DialogNode(new List<DialogOption>())),
+                    new DialogOption(new Content(), null),
                 });
 
             Dialog dialog = Dialog.CreateNew(startNode);
