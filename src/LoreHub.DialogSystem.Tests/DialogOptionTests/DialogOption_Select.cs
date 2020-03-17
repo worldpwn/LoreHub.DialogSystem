@@ -13,10 +13,10 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         {
             // Arrange
             bool isFired = false;
-            DialogNode currentDialogNode = new DialogNode(new List<DialogOption> { });
-            DialogOption optionToSelect = new DialogOption(new Content(), new DialogNode(new List<DialogOption> { }));
+            DialogNode<TestContent> currentDialogNode = new DialogNode<TestContent>(new List<DialogOption<TestContent>> { });
+            DialogOption<TestContent> optionToSelect = new DialogOption<TestContent>(new TestContent(), new DialogNode<TestContent>(new List<DialogOption<TestContent>> { }));
 
-            void FuncToFire(object sender, DialogNode e)
+            void FuncToFire(object sender, DialogNode<TestContent> e)
             {
                 isFired = true;
             }
@@ -34,12 +34,12 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         public void SelectOption_Should_ContaintNextNode()
         {
             // Arrange
-            DialogNode realNextNode = null;
-            DialogNode currentDialogNode = new DialogNode(new List<DialogOption> { });
-            DialogNode nextNode = new DialogNode(new List<DialogOption> { });
-            DialogOption optionToSelect = new DialogOption(new Content(), nextNode);
+             DialogNode<TestContent> realNextNode = null;
+         DialogNode<TestContent> currentDialogNode = new DialogNode<TestContent>(new List<DialogOption<TestContent>> { });
+         DialogNode<TestContent> nextNode = new DialogNode<TestContent>(new List<DialogOption<TestContent>> { });
+         DialogOption<TestContent> optionToSelect = new DialogOption<TestContent>(new TestContent(), nextNode);
 
-            void FuncToFire(object sender, DialogNode e)
+            void FuncToFire(object sender, DialogNode<TestContent> e)
             {
                 realNextNode = e;
             }

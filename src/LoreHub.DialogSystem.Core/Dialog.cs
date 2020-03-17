@@ -5,23 +5,23 @@ using System.Text;
 
 namespace LoreHub.DialogSystem.Core
 {
-    public class Dialog
+    public class Dialog<TContent> where TContent : IContent
     {
-        public DialogNode CurrentNode { get; private set; }
+        public DialogNode<TContent> CurrentNode { get; private set; }
 
-        public IEnumerable<DialogNode> DialogNodes => GetDialogNodes();
+        public IEnumerable<DialogNode<TContent>> DialogNodes => GetDialogNodes();
 
-        private Dialog(DialogNode startNode)
+        private Dialog(DialogNode<TContent> startNode)
         {
             this.CurrentNode = startNode;
         }
 
-        public static Dialog CreateNew(DialogNode startNode)
+        public static Dialog<TContent> CreateNew(DialogNode<TContent> startNode)
         {
-            return new Dialog(startNode);
+            return new Dialog<TContent>(startNode);
         }
 
-        private IEnumerable<DialogNode> GetDialogNodes()
+        private IEnumerable<DialogNode<TContent>> GetDialogNodes()
         {
             throw new NotImplementedException();
             // foreach (DialogNode node in CurrentNode)

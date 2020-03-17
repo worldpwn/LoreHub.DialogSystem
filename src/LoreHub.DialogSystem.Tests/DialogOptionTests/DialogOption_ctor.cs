@@ -12,10 +12,10 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         public void AllSet_Should_BeSet()
         {
             // Arrange
-            Content content = new Content();
-            DialogNode nextDialogNode = new DialogNode(new List<DialogOption> { });
+            TestContent content = new TestContent();
+            DialogNode<TestContent> nextDialogNode = new DialogNode<TestContent>(new List<DialogOption<TestContent>> { });
             // Act
-            DialogOption dialogOption = new DialogOption(content: content, nextNode: nextDialogNode);
+            DialogOption<TestContent> dialogOption = new DialogOption<TestContent>(content: content, nextNode: nextDialogNode);
 
             // Assert
             Assert.Equal(content, dialogOption.Content);
@@ -32,13 +32,13 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         )
         {
             // Arrange
-            Content content = new Content();
-            DialogNode nextDialogNode = new DialogNode(new List<DialogOption> { });
+            TestContent content = new TestContent();
+            DialogNode<TestContent> nextDialogNode = new DialogNode<TestContent>(new List<DialogOption<TestContent>> { });
             if (contetIsNull) content = null;
             if (nextNodeIsNull) nextDialogNode = null;
 
             // Act
-            Action action = () => new DialogOption(content: content, nextNode: nextDialogNode);
+            Action action = () => new DialogOption<TestContent>(content: content, nextNode: nextDialogNode);
 
             // Assert
             Assert.Throws<ArgumentNullException>(action);

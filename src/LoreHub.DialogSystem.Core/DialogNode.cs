@@ -5,14 +5,13 @@ using System.Linq;
 
 namespace LoreHub.DialogSystem.Core
 {
-    public class DialogNode
+    public class DialogNode<TContent> where TContent : IContent
     {
         public Guid Id { get; private set; }
-        public string Content => $"I am Node#{Id}";
-        public IEnumerable<DialogOption> DialogOptions { get; private set; }
+        public TContent Content { get; private set; }
+        public IEnumerable<DialogOption<TContent>> DialogOptions { get; private set; }
 
-        private DialogNode _next;
-        public DialogNode(IEnumerable<DialogOption> dialogOptions)
+        public DialogNode(IEnumerable<DialogOption<TContent>> dialogOptions)
         {
             this.Id = Guid.NewGuid();
             this.DialogOptions = dialogOptions;

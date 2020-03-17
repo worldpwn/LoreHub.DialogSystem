@@ -4,16 +4,17 @@ using System.Text;
 
 namespace LoreHub.DialogSystem.Core
 {
-    public class DialogOption
+    public class DialogOption<TContent> where TContent : IContent
     {
-        public Content Content { get; private set; }
-        public DialogNode NextNode { get; private set; }
+        public TContent Content { get; private set; }
+        public DialogNode<TContent> NextNode { get; private set; }
 
-        public event EventHandler<DialogNode> SelectEvent;
+        public event EventHandler<DialogNode<TContent>> SelectEvent;
 
-        public DialogOption(Content content, DialogNode nextNode)
+        public DialogOption(TContent content, DialogNode<TContent> nextNode)
         {
-            Content = content ?? throw new ArgumentNullException(nameof(content));
+            if (content == null) throw new ArgumentNullException(nameof(content));
+            Content = content  ;
             NextNode = nextNode ?? throw new ArgumentNullException(nameof(content));
         }
 
@@ -24,7 +25,7 @@ namespace LoreHub.DialogSystem.Core
 
         protected virtual void OnSelectEvent(EventArgs e)
         {
-            EventHandler<DialogNode> handler = SelectEvent;
+            EventHandler<DialogNode<TContent>> handler = SelectEvent;
             handler?.Invoke(this, NextNode);
         }
 
