@@ -34,10 +34,10 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         public void SelectOption_Should_ContaintNextNode()
         {
             // Arrange
-             DialogNode<TestContent> realNextNode = null;
-         DialogNode<TestContent> currentDialogNode = new DialogNode<TestContent>(new List<DialogOption<TestContent>> { });
-         DialogNode<TestContent> nextNode = new DialogNode<TestContent>(new List<DialogOption<TestContent>> { });
-         DialogOption<TestContent> optionToSelect = new DialogOption<TestContent>(new TestContent(), nextNode);
+            DialogNode<TestContent> realNextNode = null;
+            DialogNode<TestContent> currentDialogNode = new DialogNode<TestContent>(new List<DialogOption<TestContent>> { });
+            DialogNode<TestContent> nextNode = new DialogNode<TestContent>(new List<DialogOption<TestContent>> { });
+            DialogOption<TestContent> optionToSelect = new DialogOption<TestContent>(new TestContent(), nextNode);
 
             void FuncToFire(object sender, DialogNode<TestContent> e)
             {
