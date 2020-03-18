@@ -24,7 +24,7 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
-        public void SimpleDialog_Shoulb_BePlayed(bool isFirstBranch)
+        public void SimpleDialogWithBranch_Should_BePlayed(bool isFirstBranch)
         {
             //Arrange
             TestContent optionOneContent = new TestContent("Hi, I am fine.");
@@ -60,6 +60,58 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
                 dialog.CurrentNode.DialogOptions.FirstOrDefault(o => o.Content == optionTwoContent).Select();
                 Assert.Equal(nodeThree, dialog.CurrentNode);
             }
+        }
+
+        /// <summary>
+        /// (1) Hello! What's up?
+        /// - One. => 2
+        ///
+        /// (2) What one?
+        /// - Two. => 3
+        ///
+        /// (3) What's next?
+        /// - Three lol. => end
+        /// </summary>
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void SimpleDialogStraight_Should_BePlayed(bool isFirstBranch)
+        {
+            //Arrange
+            TestContent stepOneContent = new TestContent("Hello! What's up?");
+            TestContent stepTwoContent = new TestContent("What one?");
+            TestContent stepThreeContent = new TestContent("What's next?");
+
+            DialogNode<TestContent> nodeThree = DialogNode<TestContent>.CreateExitNode(
+                content: stepThreeContent,
+                endOption: new DialogOptionEnd<TestContent>(new TestContent("Three lol.")));
+
+            DialogNode<TestContent> nodeTwo = DialogNode<TestContent>.CreateNew(
+                content: stepTwoContent,
+                dialogOptions: new List<IDialogOption<TestContent>>
+                {
+                    new DialogOptionNext<TestContent>(content: new TestContent("Two."), nextNode: nodeThree),
+                });
+
+            DialogNode<TestContent> nodeOne = DialogNode<TestContent>.CreateNew(
+                content: stepOneContent,
+                dialogOptions: new List<IDialogOption<TestContent>>
+                {
+                    new DialogOptionNext<TestContent>(content: new TestContent("One."), nextNode: nodeTwo),
+                });
+
+            Dialog<TestContent> dialog = Dialog<TestContent>.CreateNew(startNode: nodeOne);
+
+            // Act && Assert
+            // Step 1
+            dialog.CurrentNode.DialogOptions.FirstOrDefault().Select();
+            Assert.Equal(stepOneContent, dialog.CurrentNode.Content);
+            // Step 2
+            dialog.CurrentNode.DialogOptions.FirstOrDefault().Select();
+            Assert.Equal(stepTwoContent, dialog.CurrentNode.Content);
+            // Step 3
+            dialog.CurrentNode.DialogOptions.FirstOrDefault().Select();
+            Assert.Equal(stepThreeContent, dialog.CurrentNode.Content);
         }
     }
 }
