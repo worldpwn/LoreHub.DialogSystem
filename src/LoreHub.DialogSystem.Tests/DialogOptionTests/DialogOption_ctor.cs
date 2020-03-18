@@ -1,4 +1,5 @@
 using LoreHub.DialogSystem.Core;
+using LoreHub.DialogSystem.Core.DialogOptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,9 +14,9 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         {
             // Arrange
             TestContent content = new TestContent();
-            DialogNode<TestContent> nextDialogNode = DialogNode<TestContent>.CreateNew(new List<DialogOption<TestContent>> { });
+            DialogNode<TestContent> nextDialogNode = DialogNode<TestContent>.CreateNew(new List<DialogOptionNext<TestContent>> { });
             // Act
-            DialogOption<TestContent> dialogOption = new DialogOption<TestContent>(content: content, nextNode: nextDialogNode);
+            DialogOptionNext<TestContent> dialogOption = new DialogOptionNext<TestContent>(content: content, nextNode: nextDialogNode);
 
             // Assert
             Assert.Equal(content, dialogOption.Content);
@@ -33,12 +34,12 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         {
             // Arrange
             TestContent content = new TestContent();
-            DialogNode<TestContent> nextDialogNode = DialogNode<TestContent>.CreateNew(new List<DialogOption<TestContent>> { });
+            DialogNode<TestContent> nextDialogNode = DialogNode<TestContent>.CreateNew(new List<DialogOptionNext<TestContent>> { });
             if (contetIsNull) content = null;
             if (nextNodeIsNull) nextDialogNode = null;
 
             // Act
-            Action action = () => new DialogOption<TestContent>(content: content, nextNode: nextDialogNode);
+            Action action = () => new DialogOptionNext<TestContent>(content: content, nextNode: nextDialogNode);
 
             // Assert
             Assert.Throws<ArgumentNullException>(action);

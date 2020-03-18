@@ -1,6 +1,8 @@
 using LoreHub.DialogSystem.Core;
+using LoreHub.DialogSystem.Core.DialogOptions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xunit;
 
@@ -13,15 +15,14 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         {
             // Arrange
             TestContent content = new TestContent();
-            List<DialogOption<TestContent>> options = new List<DialogOption<TestContent>> { dialogOption };
-            DialogOption<TestContent> dialogOption = new DialogOption<TestContent>(content: content, nextNode: nextDialogNode);
-            DialogNode<TestContent> nextDialogNode = DialogNode<TestContent>.CreateExitNode(dialogOption);
+            DialogOptionEnd<TestContent> dialogOption = new DialogOptionEnd<TestContent>(content);
 
             // Act
-            DialogNode<TestContent> dialogNode = DialogNode<TestContent>.CreateNew(options);
+            DialogNode<TestContent> exitNoe = DialogNode<TestContent>.CreateExitNode(dialogOption);
 
             // Assert
-            Assert.Equal(options, dialogNode.DialogOptions);
+            Assert.Single(exitNoe.DialogOptions);
+            Assert.Equal(dialogOption, exitNoe.DialogOptions.FirstOrDefault());
         }
     }
 }

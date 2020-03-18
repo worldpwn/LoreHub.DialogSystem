@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace LoreHub.DialogSystem.Core
+namespace LoreHub.DialogSystem.Core.DialogOptions
 {
-    public class DialogOption<TContent> where TContent : IContent
+    public class DialogOptionNext<TContent> : IDialogOption<TContent> where TContent : IContent
     {
         public TContent Content { get; private set; }
         public DialogNode<TContent> NextNode { get; private set; }
 
         public event EventHandler<DialogNode<TContent>> SelectEvent;
 
-        public DialogOption(TContent content, DialogNode<TContent> nextNode)
+        public DialogOptionNext(TContent content, DialogNode<TContent> nextNode)
         {
             if (content == null) throw new ArgumentNullException(nameof(content));
-            Content = content  ;
+            Content = content;
             NextNode = nextNode ?? throw new ArgumentNullException(nameof(content));
         }
 

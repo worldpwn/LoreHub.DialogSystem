@@ -1,4 +1,5 @@
 using LoreHub.DialogSystem.Core;
+using LoreHub.DialogSystem.Core.DialogOptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,9 +14,9 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         {
             // Arrange
             TestContent content = new TestContent();
-            DialogNode<TestContent> nextDialogNode = DialogNode<TestContent>.CreateNew(new List<DialogOption<TestContent>> { });
-            DialogOption<TestContent> dialogOption = new DialogOption<TestContent>(content: content, nextNode: nextDialogNode);
-            List<DialogOption<TestContent>> options = new List<DialogOption<TestContent>> { dialogOption };
+            DialogNode<TestContent> nextDialogNode = DialogNode<TestContent>.CreateNew(new List<DialogOptionNext<TestContent>> { });
+            DialogOptionNext<TestContent> dialogOption = new DialogOptionNext<TestContent>(content: content, nextNode: nextDialogNode);
+            List<DialogOptionNext<TestContent>> options = new List<DialogOptionNext<TestContent>> { dialogOption };
 
             // Act
             DialogNode<TestContent> dialogNode = DialogNode<TestContent>.CreateNew(options);
