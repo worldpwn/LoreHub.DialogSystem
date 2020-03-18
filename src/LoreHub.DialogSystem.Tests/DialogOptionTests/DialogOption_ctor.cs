@@ -13,7 +13,7 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         {
             // Arrange
             TestContent content = new TestContent();
-            DialogNode<TestContent> nextDialogNode = new DialogNode<TestContent>(new List<DialogOption<TestContent>> { });
+            DialogNode<TestContent> nextDialogNode = DialogNode<TestContent>.CreateNew(new List<DialogOption<TestContent>> { });
             // Act
             DialogOption<TestContent> dialogOption = new DialogOption<TestContent>(content: content, nextNode: nextDialogNode);
 
@@ -33,7 +33,7 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         {
             // Arrange
             TestContent content = new TestContent();
-            DialogNode<TestContent> nextDialogNode = new DialogNode<TestContent>(new List<DialogOption<TestContent>> { });
+            DialogNode<TestContent> nextDialogNode = DialogNode<TestContent>.CreateNew(new List<DialogOption<TestContent>> { });
             if (contetIsNull) content = null;
             if (nextNodeIsNull) nextDialogNode = null;
 

@@ -10,9 +10,14 @@ namespace LoreHub.DialogSystem.Core
         public TContent Content { get; private set; }
         public IEnumerable<DialogOption<TContent>> DialogOptions { get; private set; }
 
-        public DialogNode(IEnumerable<DialogOption<TContent>> dialogOptions)
+        private DialogNode(IEnumerable<DialogOption<TContent>> dialogOptions)
         {
             this.DialogOptions = dialogOptions;
+        }
+
+        public static DialogNode<TContent> CreateNew(IEnumerable<DialogOption<TContent>> dialogOptions)
+        {
+            return new DialogNode<TContent>(dialogOptions);
         }
     }
 }

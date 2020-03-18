@@ -13,8 +13,8 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         {
             // Arrange
             bool isFired = false;
-            DialogNode<TestContent> currentDialogNode = new DialogNode<TestContent>(new List<DialogOption<TestContent>> { });
-            DialogOption<TestContent> optionToSelect = new DialogOption<TestContent>(new TestContent(), new DialogNode<TestContent>(new List<DialogOption<TestContent>> { }));
+            DialogNode<TestContent> currentDialogNode = DialogNode<TestContent>.CreateNew(new List<DialogOption<TestContent>> { });
+            DialogOption<TestContent> optionToSelect = new DialogOption<TestContent>(new TestContent(), DialogNode<TestContent>.CreateNew(new List<DialogOption<TestContent>> { }));
 
             void FuncToFire(object sender, DialogNode<TestContent> e)
             {
@@ -35,8 +35,8 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         {
             // Arrange
             DialogNode<TestContent> realNextNode = null;
-            DialogNode<TestContent> currentDialogNode = new DialogNode<TestContent>(new List<DialogOption<TestContent>> { });
-            DialogNode<TestContent> nextNode = new DialogNode<TestContent>(new List<DialogOption<TestContent>> { });
+            DialogNode<TestContent> currentDialogNode = DialogNode<TestContent>.CreateNew(new List<DialogOption<TestContent>> { });
+            DialogNode<TestContent> nextNode = DialogNode<TestContent>.CreateNew(new List<DialogOption<TestContent>> { });
             DialogOption<TestContent> optionToSelect = new DialogOption<TestContent>(new TestContent(), nextNode);
 
             void FuncToFire(object sender, DialogNode<TestContent> e)

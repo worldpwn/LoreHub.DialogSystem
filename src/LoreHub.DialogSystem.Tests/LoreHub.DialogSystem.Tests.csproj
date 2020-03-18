@@ -16,8 +16,4 @@
     <ProjectReference Include="..\LoreHub.DialogSystem.Core\LoreHub.DialogSystem.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DialogNodeTests\" />
-  </ItemGroup>
-
 </Project>
