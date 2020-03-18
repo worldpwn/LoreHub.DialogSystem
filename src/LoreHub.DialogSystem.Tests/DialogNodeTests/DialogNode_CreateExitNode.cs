@@ -18,11 +18,12 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
             DialogOptionEnd<TestContent> dialogOption = new DialogOptionEnd<TestContent>(content);
 
             // Act
-            DialogNode<TestContent> exitNoe = DialogNode<TestContent>.CreateExitNode(dialogOption);
+            DialogNode<TestContent> exitNoe = DialogNode<TestContent>.CreateExitNode(content: content, endOption: dialogOption);
 
             // Assert
             Assert.Single(exitNoe.DialogOptions);
             Assert.Equal(dialogOption, exitNoe.DialogOptions.FirstOrDefault());
+            Assert.Equal(content, exitNoe.Content);
         }
     }
 }

@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoreHub.DialogSystem.Tests"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{56635187-B800-4C80-84C5-10CAD58369B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoreHub.DialogSystem.ConsoleExample", "LoreHub.DialogSystem.ConsoleExample\LoreHub.DialogSystem.ConsoleExample.csproj", "{57F7E3BC-97D5-466B-899C-DCC28AB3C06E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoreHub.DialogSystem.ConsoleExample", "LoreHub.DialogSystem.ConsoleExample\LoreHub.DialogSystem.ConsoleExample.csproj", "{57F7E3BC-97D5-466B-899C-DCC28AB3C06E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7A7C8E14-08F3-4BCE-AFB0-274AD0A53508}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
