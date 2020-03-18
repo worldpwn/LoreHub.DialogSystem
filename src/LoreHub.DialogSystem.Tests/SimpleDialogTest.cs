@@ -1,4 +1,4 @@
-using LoreHub.DialogSystem.Core;
+﻿using LoreHub.DialogSystem.Core;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,21 +24,23 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         public void SimpleDialog_Shoulb_BePlayed()
         {
             // Arrange
-            DialogNode nodeOne = DialogNode.CreateNew()
-            Dialog<TestContent> dialog = Dialog<TestContent>.CreateNew()
+            DialogNode<TestContent> nodeOne = DialogNode<TestContent>.CreateNew(
+            new List<IDialogOption<TestContent>>
+            {
 
+            });
+            //Dialog<TestContent> dialog = Dialog<TestContent>.CreateNew()
 
+            //TestContent content = new TestContent();
+            //DialogNode<TestContent> nextDialogNode = new DialogNode<TestContent>(new List<DialogOptionNext<TestContent>> { });
+            //DialogOptionNext<TestContent> dialogOption = new DialogOptionNext<TestContent>(content: content, nextNode: nextDialogNode);
+            //List<DialogOptionNext<TestContent>> options = new List<DialogOptionNext<TestContent>> { dialogOption };
 
-             TestContent content = new TestContent();
-         DialogNode<TestContent> nextDialogNode = new DialogNode<TestContent>(new List<DialogOptionNext<TestContent>> { });
-         DialogOptionNext<TestContent> dialogOption = new DialogOptionNext<TestContent>(content: content, nextNode: nextDialogNode);
-         List<DialogOptionNext<TestContent>> options = new List<DialogOptionNext<TestContent>> { dialogOption };
+            //// Act
+            //DialogNode<TestContent> dialogNode = new DialogNode<TestContent>(options);
 
-         // Act
-         DialogNode<TestContent> dialogNode = new DialogNode<TestContent>(options);
-
-         // Assert
-         Assert.Equal(options, dialogNode.DialogOptions);
+            //// Assert
+            //Assert.Equal(options, dialogNode.DialogOptions);
       }
     }
 }

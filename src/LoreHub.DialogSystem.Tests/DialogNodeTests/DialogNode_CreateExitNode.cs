@@ -1,4 +1,4 @@
-using LoreHub.DialogSystem.Core;
+﻿using LoreHub.DialogSystem.Core;
 using LoreHub.DialogSystem.Core.DialogOptions;
 using System;
 using System.Collections.Generic;
