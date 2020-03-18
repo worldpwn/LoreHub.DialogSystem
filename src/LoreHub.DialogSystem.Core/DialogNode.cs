@@ -19,5 +19,10 @@ namespace LoreHub.DialogSystem.Core
         {
             return new DialogNode<TContent>(dialogOptions);
         }
+
+        public static DialogNode<TContent> CreateExitNode(DialogOption<TContent> exitOption)
+        {
+            return new DialogNode<TContent>(new List<DialogOption<TContent>> { exitOption });
+        }
     }
 }

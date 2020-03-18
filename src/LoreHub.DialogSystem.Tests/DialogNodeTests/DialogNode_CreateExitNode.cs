@@ -6,16 +6,16 @@ using Xunit;
 
 namespace LoreHub.DialogSystem.Tests.DialogOptionTests
 {
-    public class DialogNode_CreateNew
+    public class DialogNode_CreateExitNode
     {
         [Fact]
-        public void AllSet_Should_BeSet()
+        public void Call_Should_CreateExitNode()
         {
             // Arrange
             TestContent content = new TestContent();
-            DialogNode<TestContent> nextDialogNode = DialogNode<TestContent>.CreateNew(new List<DialogOption<TestContent>> { });
-            DialogOption<TestContent> dialogOption = new DialogOption<TestContent>(content: content, nextNode: nextDialogNode);
             List<DialogOption<TestContent>> options = new List<DialogOption<TestContent>> { dialogOption };
+            DialogOption<TestContent> dialogOption = new DialogOption<TestContent>(content: content, nextNode: nextDialogNode);
+            DialogNode<TestContent> nextDialogNode = DialogNode<TestContent>.CreateExitNode(dialogOption);
 
             // Act
             DialogNode<TestContent> dialogNode = DialogNode<TestContent>.CreateNew(options);
