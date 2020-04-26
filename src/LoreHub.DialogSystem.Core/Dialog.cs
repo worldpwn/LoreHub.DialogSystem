@@ -1,36 +1,34 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace LoreHub.DialogSystem.Core
 {
-    public class Dialog
+    public class Dialog<TContent> where TContent : IContent
     {
-        public DialogNode CurrentNode { get; private set; }
+        public DialogNode<TContent> CurrentNode { get; private set; }
 
-        public IEnumerable<DialogNode> DialogNodes => GetDialogNodes();
-
-        private Dialog(DialogNode startNode)
+        private Dialog(DialogNode<TContent> startNode)
         {
-            CurrentNode = startNode;
+            this.CurrentNode = startNode;
+            this.SubscribeToCurrentNodeEvent();
         }
 
-        public static Dialog CreateNew(DialogNode startNode)
+        public static Dialog<TContent> CreateNew(DialogNode<TContent> startNode)
         {
-            return new Dialog(startNode);
+            return new Dialog<TContent>(startNode);
         }
 
-        public void Start()
+        private void SubscribeToCurrentNodeEvent()
         {
-
+            this.CurrentNode.ChangeNodeEvent += ChangeNodeEvent;
         }
 
-        private IEnumerable<DialogNode> GetDialogNodes()
+        private void ChangeNodeEvent(object sender, DialogNode<TContent> nextNode)
         {
-            foreach (DialogNode node in CurrentNode)
-            {
-                yield return node;
-            }
+            this.CurrentNode = nextNode;
+            this.SubscribeToCurrentNodeEvent();
         }
     }
 }

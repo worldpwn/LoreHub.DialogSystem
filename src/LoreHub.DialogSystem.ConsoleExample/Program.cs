@@ -1,5 +1,8 @@
-﻿using LoreHub.DialogSystem.Core;
+﻿using LoreHub.DialogSystem.ConsoleExample.Data;
+//using LoreHub.DialogSystem.ConsoleExample.Presentation;
+using LoreHub.DialogSystem.Core;
 using System;
+using System.Collections.Generic;
 
 namespace LoreHub.DialogSystem.ConsoleExample
 {
@@ -7,13 +10,12 @@ namespace LoreHub.DialogSystem.ConsoleExample
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Dialog dialog = SampleDialog.GetDialog();
 
-            DialogNode startNode = new DialogNode();
+            //ConsoleDialog consoleDialog = new ConsoleDialog(dialog);
+            //consoleDialog.Start();
 
-            Dialog dialog = Dialog.CreateNew(startNode);
 
-            dialog.Start();
         }
     }
 }
