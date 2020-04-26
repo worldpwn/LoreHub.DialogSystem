@@ -11,10 +11,14 @@ namespace LoreHub.DialogSystem.Core
         public TContent Content { get; private set; }
         public IEnumerable<IDialogOption<TContent>> DialogOptions { get; private set; }
 
+        public event EventHandler<DialogNode<TContent>> ChangeNodeEvent;
+
         private DialogNode(TContent content, IEnumerable<IDialogOption<TContent>> dialogOptions)
         {
             this.Content = content;
             this.DialogOptions = dialogOptions;
+
+            this.SubscribeToAllOptions();
         }
 
         public static DialogNode<TContent> CreateNew(TContent content, IEnumerable<IDialogOption<TContent>> dialogOptions)
@@ -26,5 +30,25 @@ namespace LoreHub.DialogSystem.Core
         {
             return new DialogNode<TContent>(content, new List<IDialogOption<TContent>> { endOption });
         }
+
+        private void SubscribeToAllOptions()
+        {
+            foreach (IDialogOption<TContent> option in this.DialogOptions)
+            {
+                option.SelectEvent += OptionSelectEvent;
+            }
+        }
+
+        private void OptionSelectEvent(object sender, DialogNode<TContent> nextNode)
+        {
+            OnChangeNodeEvent(nextNode);
+        }
+
+        protected virtual void OnChangeNodeEvent(DialogNode<TContent> nextNode)
+        {
+            EventHandler<DialogNode<TContent>> handler = ChangeNodeEvent;
+            handler?.Invoke(this, nextNode);
+        }
+
     }
 }

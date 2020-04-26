@@ -9,11 +9,10 @@ namespace LoreHub.DialogSystem.Core
     {
         public DialogNode<TContent> CurrentNode { get; private set; }
 
-        public IEnumerable<DialogNode<TContent>> DialogNodes => GetDialogNodes();
-
         private Dialog(DialogNode<TContent> startNode)
         {
             this.CurrentNode = startNode;
+            this.SubscribeToCurrentNodeEvent();
         }
 
         public static Dialog<TContent> CreateNew(DialogNode<TContent> startNode)
@@ -21,18 +20,15 @@ namespace LoreHub.DialogSystem.Core
             return new Dialog<TContent>(startNode);
         }
 
-        private IEnumerable<DialogNode<TContent>> GetDialogNodes()
+        private void SubscribeToCurrentNodeEvent()
         {
-            throw new NotImplementedException();
-            // foreach (DialogNode node in CurrentNode)
-            // {
-            //     yield return node;
-            // }
+            this.CurrentNode.ChangeNodeEvent += ChangeNodeEvent;
         }
 
-        public IEnumerator GetEnumerator()
+        private void ChangeNodeEvent(object sender, DialogNode<TContent> nextNode)
         {
-            throw new NotImplementedException();
+            this.CurrentNode = nextNode;
+            this.SubscribeToCurrentNodeEvent();
         }
     }
 }

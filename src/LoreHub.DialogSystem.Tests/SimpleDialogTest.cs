@@ -72,10 +72,8 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         /// (3) What's next?
         /// - Three lol. => end
         /// </summary>
-        [Theory]
-        [InlineData(true)]
-        [InlineData(false)]
-        public void SimpleDialogStraight_Should_BePlayed(bool isFirstBranch)
+        [Fact]
+        public void SimpleDialogStraight_Should_BePlayed()
         {
             //Arrange
             TestContent stepOneContent = new TestContent("Hello! What's up?");
@@ -104,7 +102,6 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
 
             // Act && Assert
             // Step 1
-            dialog.CurrentNode.DialogOptions.FirstOrDefault().Select();
             Assert.Equal(stepOneContent, dialog.CurrentNode.Content);
             // Step 2
             dialog.CurrentNode.DialogOptions.FirstOrDefault().Select();
