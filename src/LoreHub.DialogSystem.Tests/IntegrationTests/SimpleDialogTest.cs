@@ -6,7 +6,7 @@ using Xunit;
 using LoreHub.DialogSystem.Core.DialogOptions;
 using System.Linq;
 
-namespace LoreHub.DialogSystem.Tests.DialogOptionTests
+namespace LoreHub.DialogSystem.Tests.DialogOptionTests.IntegrationTests
 {
     public class SimpleDialogTest
     {
