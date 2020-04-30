@@ -8,13 +8,15 @@ namespace LoreHub.DialogSystem.Core
 {
     public class DialogNode<TContent> where TContent : IContent
     {
+        public Guid Id { get; private set; }
         public TContent Content { get; private set; }
         public IEnumerable<IDialogOption<TContent>> DialogOptions { get; private set; }
 
         public event EventHandler<DialogNode<TContent>> ChangeNodeEvent;
 
-        private DialogNode(TContent content, IEnumerable<IDialogOption<TContent>> dialogOptions)
+        private DialogNode(Guid id, TContent content, IEnumerable<IDialogOption<TContent>> dialogOptions)
         {
+            this.Id = id;
             this.Content = content;
             this.DialogOptions = dialogOptions;
 
@@ -23,12 +25,17 @@ namespace LoreHub.DialogSystem.Core
 
         public static DialogNode<TContent> CreateNew(TContent content, IEnumerable<IDialogOption<TContent>> dialogOptions)
         {
-            return new DialogNode<TContent>(content, dialogOptions);
+            return new DialogNode<TContent>(Guid.NewGuid(), content, dialogOptions);
         }
 
-        public static DialogNode<TContent> CreateExitNode(TContent content, IDialogOption<TContent> endOption)
+        public static DialogNode<TContent> CreateFromModel(Guid id, TContent content, IEnumerable<IDialogOption<TContent>> dialogOptions)
         {
-            return new DialogNode<TContent>(content, new List<IDialogOption<TContent>> { endOption });
+            return new DialogNode<TContent>(id, content, dialogOptions);
+        }
+
+        public static DialogNode<TContent> CreateExitNode(Guid id, TContent content, IDialogOption<TContent> endOption)
+        {
+            return new DialogNode<TContent>(id, content, new List<IDialogOption<TContent>> { endOption });
         }
 
         private void SubscribeToAllOptions()

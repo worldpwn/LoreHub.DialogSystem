@@ -21,11 +21,26 @@ namespace LoreHub.DialogSystem.Core.Builder
             }
 
             List<NodeModel<TContent>> nodeModels = jsonArray.ToObject<List<NodeModel<TContent>>>();
+            NodeModel<TContent> startNode = nodeModels[0];
+
+            
 
             List<DialogNode<TContent>> nodes = new List<DialogNode<TContent>>();
-            foreach (NodeModel<TContent> node in nodeModels)
+
+        
+
+            foreach (NodeModel<TContent> model in nodeModels)
             {
-                nodes.Add(CreateNodeFromModel(node));
+
+
+                //nodes.Add(
+                //    DialogNode<TContent>.CreateFromModel(
+                //        id: model.Id,
+                //        content: model.Content,
+                //        dialogOptions: CreateOptionFromModel(
+                //            model: null,
+                //            nextNode: null));
+                //    //CreateNodeFromModel(node)); ;
             }
 
             Dialog<TContent> dialog = Dialog<TContent>.CreateNew(nodes[0]);
@@ -35,6 +50,12 @@ namespace LoreHub.DialogSystem.Core.Builder
 
         public DialogNode<TContent> CreateNodeFromModel(NodeModel<TContent> model)
         {
+            //if (model is null) throw new ArgumentNullException(nameof(model));
+
+            //return DialogNode<TContent>.CreateFromModel(
+            //    id: model.Id,
+            //    content: model.Content,
+            //    dialogOptions: mode)
             throw new NotImplementedException();
         }
 

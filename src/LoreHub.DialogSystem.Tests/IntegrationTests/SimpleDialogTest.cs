@@ -32,10 +32,12 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests.IntegrationTests
 
 
             DialogNode<TestContent> nodeThree = DialogNode<TestContent>.CreateExitNode(
+                id: Guid.NewGuid(),
                 content: new TestContent("I am sorry for you."),
                 endOption: new DialogOptionEnd<TestContent>(Guid.NewGuid(), new TestContent("Yeah")));
 
             DialogNode<TestContent> nodeTwo = DialogNode<TestContent>.CreateExitNode(
+                id: Guid.NewGuid(),
                 content: new TestContent("So good."),
                 endOption: new DialogOptionEnd<TestContent>(Guid.NewGuid(), new TestContent("Bye")));
 
@@ -81,6 +83,7 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests.IntegrationTests
             TestContent stepThreeContent = new TestContent("What's next?");
 
             DialogNode<TestContent> nodeThree = DialogNode<TestContent>.CreateExitNode(
+                id: Guid.NewGuid(),
                 content: stepThreeContent,
                 endOption: new DialogOptionEnd<TestContent>(Guid.NewGuid(), new TestContent("Three lol.")));
 

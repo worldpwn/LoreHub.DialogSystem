@@ -27,7 +27,7 @@
       {
         "id": "4676f6ed-39e9-410b-916b-59a91dd2081b",
         "content": "Bye.",
-        "nextNodeId": "30c001d8-238e-4157-b16b-fd820d5248bf"
+        "nextNodeId": null
       }
     ]
   },
@@ -38,13 +38,8 @@
       {
         "id": "4676f6ed-39e9-410b-916b-59a91dd2081b",
         "content": "Finish dialog.",
-        "nextNodeId": "30c001d8-238e-4157-b16b-fd820d5248bf"
+        "nextNodeId": null
       }
     ]
-  },
-  {
-    "id": "30c001d8-238e-4157-b16b-fd820d5248bf",
-    "content": "",
-    "options": []
   }
 ]

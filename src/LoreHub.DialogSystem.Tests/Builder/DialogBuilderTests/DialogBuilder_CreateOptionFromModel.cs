@@ -21,6 +21,7 @@ namespace LoreHub.DialogSystem.Tests.Builder.DialogBuilderTests
                 nextNodeId: Guid.NewGuid());
 
             DialogNode<ContentAsString> dialogNode = DialogNode<ContentAsString>.CreateExitNode(
+                id: Guid.NewGuid(),
                 content: new ContentAsString("end"),
                 endOption: new DialogOptionEnd<ContentAsString>(Guid.NewGuid(), new ContentAsString("end option")));
 
