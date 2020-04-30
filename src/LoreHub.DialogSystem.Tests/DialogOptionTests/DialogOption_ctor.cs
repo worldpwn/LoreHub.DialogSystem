@@ -16,7 +16,7 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
             TestContent content = new TestContent();
             DialogNode<TestContent> nextDialogNode = DialogNode<TestContent>.CreateNew(content: new TestContent(), dialogOptions: new List<DialogOptionNext<TestContent>> { });
             // Act
-            DialogOptionNext<TestContent> dialogOption = new DialogOptionNext<TestContent>(content: content, nextNode: nextDialogNode);
+            DialogOptionNext<TestContent> dialogOption = new DialogOptionNext<TestContent>(Guid.NewGuid(), content: content, nextNode: nextDialogNode);
 
             // Assert
             Assert.Equal(content, dialogOption.Content);
@@ -39,7 +39,7 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
             if (nextNodeIsNull) nextDialogNode = null;
 
             // Act
-            Action action = () => new DialogOptionNext<TestContent>(content: content, nextNode: nextDialogNode);
+            Action action = () => new DialogOptionNext<TestContent>(Guid.NewGuid(), content: content, nextNode: nextDialogNode);
 
             // Assert
             Assert.Throws<ArgumentNullException>(action);

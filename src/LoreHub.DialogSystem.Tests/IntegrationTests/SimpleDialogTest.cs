@@ -33,18 +33,18 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests.IntegrationTests
 
             DialogNode<TestContent> nodeThree = DialogNode<TestContent>.CreateExitNode(
                 content: new TestContent("I am sorry for you."),
-                endOption: new DialogOptionEnd<TestContent>(new TestContent("Yeah")));
+                endOption: new DialogOptionEnd<TestContent>(Guid.NewGuid(), new TestContent("Yeah")));
 
             DialogNode<TestContent> nodeTwo = DialogNode<TestContent>.CreateExitNode(
                 content: new TestContent("So good."),
-                endOption: new DialogOptionEnd<TestContent>(new TestContent("Bye")));
+                endOption: new DialogOptionEnd<TestContent>(Guid.NewGuid(), new TestContent("Bye")));
 
             DialogNode<TestContent> nodeOne = DialogNode<TestContent>.CreateNew(
                 content: new TestContent("Hello! What's up?"),
                 dialogOptions: new List<IDialogOption<TestContent>>
                 {
-                    new DialogOptionNext<TestContent>(content: optionOneContent, nextNode: nodeTwo),
-                    new DialogOptionNext<TestContent>(content: optionTwoContent, nextNode: nodeThree)
+                    new DialogOptionNext<TestContent>(Guid.NewGuid(), content: optionOneContent, nextNode: nodeTwo),
+                    new DialogOptionNext<TestContent>(Guid.NewGuid(), content: optionTwoContent, nextNode: nodeThree)
                 });
 
             Dialog<TestContent> dialog = Dialog<TestContent>.CreateNew(startNode: nodeOne);
@@ -82,20 +82,20 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests.IntegrationTests
 
             DialogNode<TestContent> nodeThree = DialogNode<TestContent>.CreateExitNode(
                 content: stepThreeContent,
-                endOption: new DialogOptionEnd<TestContent>(new TestContent("Three lol.")));
+                endOption: new DialogOptionEnd<TestContent>(Guid.NewGuid(), new TestContent("Three lol.")));
 
             DialogNode<TestContent> nodeTwo = DialogNode<TestContent>.CreateNew(
                 content: stepTwoContent,
                 dialogOptions: new List<IDialogOption<TestContent>>
                 {
-                    new DialogOptionNext<TestContent>(content: new TestContent("Two."), nextNode: nodeThree),
+                    new DialogOptionNext<TestContent>(Guid.NewGuid(), content: new TestContent("Two."), nextNode: nodeThree),
                 });
 
             DialogNode<TestContent> nodeOne = DialogNode<TestContent>.CreateNew(
                 content: stepOneContent,
                 dialogOptions: new List<IDialogOption<TestContent>>
                 {
-                    new DialogOptionNext<TestContent>(content: new TestContent("One."), nextNode: nodeTwo),
+                    new DialogOptionNext<TestContent>(Guid.NewGuid(), content: new TestContent("One."), nextNode: nodeTwo),
                 });
 
             Dialog<TestContent> dialog = Dialog<TestContent>.CreateNew(startNode: nodeOne);

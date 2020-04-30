@@ -6,6 +6,7 @@ namespace LoreHub.DialogSystem.Core.DialogOptions
 {
     public interface IDialogOption<TContent> where TContent : IContent
     {
+        Guid Id { get; }
         TContent Content { get; }
         event EventHandler<DialogNode<TContent>> SelectEvent;
         void Select();

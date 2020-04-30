@@ -6,14 +6,18 @@ namespace LoreHub.DialogSystem.Core.DialogOptions
 {
     public class DialogOptionEnd<TContent> : IDialogOption<TContent> where TContent : IContent
     {
+        public Guid Id { get; private set; }
+
         public TContent Content { get; private set; }
 
         public event EventHandler<DialogNode<TContent>> SelectEvent;
 
-        public DialogOptionEnd(TContent content)
+        public DialogOptionEnd(Guid id, TContent content)
         {
             if (content == null) throw new ArgumentNullException(nameof(content));
-            Content = content;
+
+            this.Id = id;
+            this.Content = content;
         }
 
         public void Select()

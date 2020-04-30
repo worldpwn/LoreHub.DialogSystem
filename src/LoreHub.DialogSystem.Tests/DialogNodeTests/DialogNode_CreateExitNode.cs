@@ -15,7 +15,7 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
         {
             // Arrange
             TestContent content = new TestContent();
-            DialogOptionEnd<TestContent> dialogOption = new DialogOptionEnd<TestContent>(content);
+            DialogOptionEnd<TestContent> dialogOption = new DialogOptionEnd<TestContent>(Guid.NewGuid(), content);
 
             // Act
             DialogNode<TestContent> exitNoe = DialogNode<TestContent>.CreateExitNode(content: content, endOption: dialogOption);

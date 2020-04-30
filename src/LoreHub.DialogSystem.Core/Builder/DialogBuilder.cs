@@ -11,12 +11,6 @@ namespace LoreHub.DialogSystem.Core.Builder
 {
     public class DialogBuilder<TContent> where TContent : IContent
     {
-        //private readonly JsonConverter _contentJsonConverter;
-        //public DialogBuilder(JsonConverter contentJsonConverter)
-        //{
-        //    this._contentJsonConverter = contentJsonConverter;
-        //}
-
         public Dialog<TContent> CreateFromJSON(string path)
         {
             JArray jsonArray;
@@ -28,25 +22,31 @@ namespace LoreHub.DialogSystem.Core.Builder
 
             List<NodeModel<TContent>> nodeModels = jsonArray.ToObject<List<NodeModel<TContent>>>();
 
-            //List<DialogNode<TContent>> nodes = new List<DialogNode<TContent>>();
-            //foreach (NodeModel<TContent> node in nodeModels)
-            //{
-            //    nodes.Add(DialogNode<TContent>.CreateNew)
-            //}
+            List<DialogNode<TContent>> nodes = new List<DialogNode<TContent>>();
+            foreach (NodeModel<TContent> node in nodeModels)
+            {
+                nodes.Add(CreateNodeFromModel(node));
+            }
 
-           // Dialog<TContent> dialog = Dialog<TContent>.CreateNew(nodeModels[0]);
+            Dialog<TContent> dialog = Dialog<TContent>.CreateNew(nodes[0]);
 
             throw new NotImplementedException();
         }
 
-        public DialogNode<TContent> CreateFromModel(NodeModel<TContent> model)
+        public DialogNode<TContent> CreateNodeFromModel(NodeModel<TContent> model)
         {
             throw new NotImplementedException();
         }
 
-        public IDialogOption<TContent> CreateFromModel(OptionModel<TContent> model)
+        public IDialogOption<TContent> CreateOptionFromModel(OptionModel<TContent> model, DialogNode<TContent> nextNode)
         {
-            throw new NotImplementedException();
+            if (model is null) throw new ArgumentNullException(nameof(model));
+            if (!(model.NextNodeId is null) && nextNode is null) throw new ArgumentException($"You cannot create option if {nameof(nextNode)} is null but {nameof(model)} contains id to next node.");
+
+            if (nextNode is null)
+                return new DialogOptionEnd<TContent>(model.Id, model.Content);
+            else
+                return new DialogOptionNext<TContent>(model.Id, model.Content, nextNode);
         }
     }
 }

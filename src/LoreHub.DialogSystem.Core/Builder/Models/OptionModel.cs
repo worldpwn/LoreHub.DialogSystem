@@ -8,9 +8,9 @@ namespace LoreHub.DialogSystem.Core.Builder.Models
     {
         public Guid Id { get; private set; }
         public TContent Content { get; private set; }
-        public Guid NextNodeId { get; private set; }
+        public Guid? NextNodeId { get; private set; }
 
-        public OptionModel(Guid id, TContent content, Guid nextNodeId)
+        public OptionModel(Guid id, TContent content, Guid? nextNodeId)
         {
             Id = id;
             Content = content;

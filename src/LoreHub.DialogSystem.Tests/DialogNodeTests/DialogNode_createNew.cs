@@ -15,7 +15,7 @@ namespace LoreHub.DialogSystem.Tests.DialogOptionTests
             // Arrange
             TestContent content = new TestContent();
             DialogNode<TestContent> nextDialogNode = DialogNode<TestContent>.CreateNew(content: content, dialogOptions: new List<DialogOptionNext<TestContent>> { });
-            DialogOptionNext<TestContent> dialogOption = new DialogOptionNext<TestContent>(content: content, nextNode: nextDialogNode);
+            DialogOptionNext<TestContent> dialogOption = new DialogOptionNext<TestContent>(Guid.NewGuid(), content: content, nextNode: nextDialogNode);
             List<DialogOptionNext<TestContent>> options = new List<DialogOptionNext<TestContent>> { dialogOption };
 
             // Act
