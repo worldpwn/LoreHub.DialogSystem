@@ -49,6 +49,5 @@ namespace LoreHub.DialogSystem.Core
             EventHandler<DialogNode<TContent>> handler = ChangeNodeEvent;
             handler?.Invoke(this, nextNode);
         }
-
     }
 }
