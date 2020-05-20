@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using LoreHub.DialogSystem.Core.Builder.Models;
 using LoreHub.DialogSystem.Core.DialogOptions;
@@ -21,9 +22,19 @@ namespace LoreHub.DialogSystem.Core.Builder
             }
 
             List<NodeModel<TContent>> nodeModels = jsonArray.ToObject<List<NodeModel<TContent>>>();
-            NodeModel<TContent> startNode = nodeModels[0];
+            IEnumerable<OptionModel<TContent>> optionModels = nodeModels.SelectMany(n => n.Options);
+
+
+            IEnumerable<OptionModel<TContent>> endOptionModels = optionModels.Where(o => o.NextNodeId is null);
+            IEnumerable<IDialogOption<TContent>> endOptions = endOptionModels.Select(o => CreateOptionFromModel(o, null));
 
             
+
+            NodeModel <TContent> startNode = nodeModels[0];
+            
+
+
+
 
             List<DialogNode<TContent>> nodes = new List<DialogNode<TContent>>();
 
