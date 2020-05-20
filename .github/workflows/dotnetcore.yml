@@ -1,6 +1,6 @@
 name: ci
 
-on:
+on: 
   push:
     branches:
       - master
@@ -10,21 +10,20 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 3.1.102
-      - name: Build with dotnet
-        run: dotnet build ./src/LoreHub.DialogSystem.Core/LoreHub.DialogSystem.Core.csproj --configuration Release
-      - name: Test with dotnet
-        run: dotnet test ./src/LoreHub.DialogSystem.Tests
-
-      - uses: actions/checkout@master
-      - name: Codecov Test Coverage
-      - uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.102
+    - name: Build with dotnet
+      run: dotnet build ./src/LoreHub.DialogSystem.Core/LoreHub.DialogSystem.Core.csproj --configuration Release
+    - name: Test with dotnet
+      run: dotnet test ./src/LoreHub.DialogSystem.Tests
+    - name: Upload coverage to Codecov  
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
